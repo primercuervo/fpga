@@ -21,6 +21,7 @@ noc_block_packet_resizer.v \
 noc_block_split_stream.v \
 noc_block_vector_iir.v \
 noc_block_addsub.v \
+noc_block_copy.v \
 noc_block_window.v \
 noc_block_keep_one_in_n.v \
 noc_block_pfb.v \

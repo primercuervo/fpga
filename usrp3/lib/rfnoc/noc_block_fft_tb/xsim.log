@@ -1,0 +1,278 @@
+#-----------------------------------------------------------
+# Vivado v2015.4 (64-bit)
+# SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
+# IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
+# Start of session at: Mon May 16 15:13:24 2016
+# Process ID: 29894
+# Current directory: /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb
+# Command line: vivado -mode batch -source /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/top/../tools/scripts/viv_sim_project.tcl -log xsim.log -nojournal
+# Log file: /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/xsim.log
+# Journal file: 
+#-----------------------------------------------------------
+source /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/top/../tools/scripts/viv_sim_project.tcl
+# set simulator       $::env(VIV_SIMULATOR)
+# set design_srcs     $::env(VIV_DESIGN_SRCS)
+# set sim_srcs        $::env(VIV_SIM_SRCS)
+# set sim_top         $::env(VIV_SIM_TOP)
+# set part_name       $::env(VIV_PART_NAME)
+# set sim_runtime     $::env(VIV_SIM_RUNTIME)
+# set sim_fast        $::env(VIV_SIM_FAST)
+# set sim_complibdir  $::env(VIV_SIM_COMPLIBDIR)
+# set sim_user_do     $::env(VIV_SIM_USER_DO)
+# set sim_64bit       $::env(VIV_SIM_64BIT)
+# set vivado_mode     $::env(VIV_MODE)
+# set working_dir     [pwd]
+# set sim_fileset "sim_1"
+# set project_name "[string tolower $simulator]_proj"
+# if {[expr [file isdirectory $sim_complibdir] == 0]} {
+#     set sim_complibdir  ""
+#     if [expr [string equal $simulator "XSim"] == 0] {
+#         puts "BUILDER: \[ERROR\]: Could not resolve the location for the compiled simulation libraries."
+#         puts "                  Please build libraries for chosen simulator and set the env or"
+#         puts "                  makefile variable SIM_COMPLIBDIR to point to the location."
+#         exit 1
+#     }
+# }
+# puts "BUILDER: Creating Vivado simulation project part $part_name"
+BUILDER: Creating Vivado simulation project part xc7k410tffg900-2
+# create_project -part $part_name -force $project_name/$project_name
+# foreach src_file $design_srcs {
+#     set src_ext [file extension $src_file ]
+#     if [expr [lsearch {.vhd .vhdl} $src_ext] >= 0] {
+#         puts "BUILDER: Adding VHDL    : $src_file"
+#         read_vhdl -library work $src_file
+#     } elseif [expr [lsearch {.v .vh} $src_ext] >= 0] {
+#         puts "BUILDER: Adding Verilog : $src_file"
+#         read_verilog $src_file
+#     } elseif [expr [lsearch {.sv} $src_ext] >= 0] {
+#         puts "BUILDER: Adding SVerilog: $src_file"
+#         read_verilog -sv $src_file
+#     } elseif [expr [lsearch {.xdc} $src_ext] >= 0] {
+#         puts "BUILDER: Adding XDC     : $src_file"
+#         read_xdc $src_file
+#     } elseif [expr [lsearch {.xci} $src_ext] >= 0] {
+#         puts "BUILDER: Adding IP      : $src_file"
+#         read_ip $src_file
+#     } elseif [expr [lsearch {.ngc .edif} $src_ext] >= 0] {
+#         puts "BUILDER: Adding Netlist : $src_file"
+#         read_edif $src_file
+#     } else {
+#         puts "BUILDER: \[WARNING\] File ignored!!!: $src_file"
+#     }
+# }
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_mux4.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_mux8.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_demux4.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_demux8.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_mux.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_demux.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_short.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_flop.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_bram.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_packet_gate.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_cascade.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo64_to_fifo32.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo32_to_fifo64.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_2clk.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_fifo_2clk_cascade.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_loopback.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/fifo/axi_filter_mux4.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_dma_master.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_dram_fifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_embed_tlast.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_extract_tlast.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_chdr_test_pattern.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_fast_fifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_fast_extract_tlast.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/axi/axi_chdr_header_trigger.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/reset_sync.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/por_gen.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/gpio_atr.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/simple_spi_core.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/simple_i2c_core.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/setting_reg.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_setting_reg.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/settings_bus_crossclock.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/settings_bus_mux.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/settings_bus_mux_crossclock.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/radio_ctrl_proc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/ram_2port.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_crossbar.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_slave_mux.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_fifo_header.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/arb_qualify_master.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_forwarding_cam.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_test_vfifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/dram_2port.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/cvita_uart.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/serial_to_settings.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/filter_bad_sid.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/synchronizer_impl.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/synchronizer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/binary_encoder.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/priority_encoder.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/priority_encoder_one_hot.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/ad5662_auto_spi.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/new_tx_control.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/new_tx_deframer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/tx_responder.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/trigger_context_pkt.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/context_packet_gen.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/new_rx_control.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/new_rx_framer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_16sc_to_xxxx_chain.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_xxxx_to_16sc_chain.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_16sc_to_12sc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_12sc_to_16sc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_16sc_to_8sc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_8sc_to_16sc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_16sc_to_32f.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_32f_to_16sc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_32f_to_16s.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/xxf_to_xxs.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/chdr_16s_to_32f.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/xxs_to_xxf.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/float_to_iq.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/vita/iq_to_float.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/timing/time_compare.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/timing/timekeeper.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/timing/pps_generator.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/timing/pps_synchronizer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/eth_dispatch.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/ip_hdr_checksum.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/vrlp_eth_framer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/chdr_eth_framer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/eth_interface.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/vrlp_to_compressed_vita.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/compressed_vita_to_vrlp.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/source_flow_control.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/cvita_insert_tlast.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/cvita_dest_lookup.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/cvita_chunker.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/cvita_dechunker.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/axis_packet_debug.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/cvita_packet_debug.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/packet_proc/fix_short_packet.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/chdr_framer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/chdr_deframer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_shell.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/simple_axi_wrapper.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_wrapper.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_bit_reduce.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_axi_fifo_loopback.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fir_filter.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_null_source_sink.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_schmidl_cox.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_packet_resizer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_split_stream.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_vector_iir.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_addsub.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_window.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_keep_one_in_n.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_pfb.v
+BUILDER: Adding SVerilog: /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_export_io.sv
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_conv_encoder_qpsk.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/pfb.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/pfb_stage.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/null_source.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/schmidl_cox.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/split_stream.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/split_stream_fifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/conj.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/delay.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/delay_type2.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/delay_type3.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/complex_to_magsq.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/phase_acc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/periodic_framer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/threshold_scaled.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/moving_sum.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/peak_finder.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/window.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/counter.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/ram_to_fifo.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/const.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/const_sreg.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/cmul.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/cadd.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_input_port.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_output_port.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/keep_one_in_n_vec.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/vector_iir.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/addsub.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/packet_resizer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_pipe.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/mult.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/mult_add.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/mult_rc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/mult_add_rc.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fft_shift.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_pipe_join.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_pipe_mac.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_round_and_clip_complex.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_join.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/split_complex.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_round_and_clip.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/join_complex.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_round.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_clip.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_serializer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/axi_deserializer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/complex_to_mag_approx.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/delay.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/fifo_srl.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/rng.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_avg.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_binmap.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_core.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_eoseq.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_histo_mem.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_line_mem.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_logpwr.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_maxhold.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_packetizer.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/f15_rise_decay.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/fosphor/axi_logpwr.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_logpwr.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fosphor.v
+BUILDER: Adding Verilog : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_moving_avg.v
+BUILDER: Adding IP      : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/build-ip/xc7k410tffg900-2/fifo_short_2clk/fifo_short_2clk.xci
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/cuervo/src/Vivado/2015.4/data/ip'.
+BUILDER: Adding IP      : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/build-ip/xc7k410tffg900-2/fifo_4k_2clk/fifo_4k_2clk.xci
+BUILDER: Adding IP      : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/build-ip/xc7k410tffg900-2/axi_fft/axi_fft.xci
+BUILDER: Adding IP      : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/build-ip/xc7k410tffg900-2/complex_to_magphase/complex_to_magphase.xci
+# foreach sim_src $sim_srcs {
+#     puts "BUILDER: Adding Sim Src : $sim_src"
+#     add_files -fileset $sim_fileset -norecurse $sim_src
+# }
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/rfnoc/noc_block_fft_tb/noc_block_fft_tb.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/lib/control/axi_crossbar_intf.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/general/sim_clks_rsts.vh
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/general/sim_exec_report.vh
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/general/sim_math.v
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/general/sim_file_io.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/axi/sim_axi4_lib.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/axi/sim_axis_lib.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/axi/sim_cvita_lib.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/control/sim_set_rb_lib.sv
+BUILDER: Adding Sim Src : /home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/sim/rfnoc/sim_rfnoc_lib.vh
+# set_property top $sim_top [get_filesets $sim_fileset]
+# set_property default_lib work [current_project]
+# set_property target_simulator $simulator [current_project]
+# if [expr [string equal $simulator "XSim"] == 1] {
+#     set_property verilog_define "SIM_RUNTIME_US=$sim_runtime WORKING_DIR=\"$working_dir\"" [get_filesets $sim_fileset]
+# } else {
+#     set_property verilog_define "SIM_RUNTIME_US=$sim_runtime WORKING_DIR=$working_dir" [get_filesets $sim_fileset]
+# }
+# set_property xsim.simulate.runtime "${sim_runtime}us" -objects [get_filesets $sim_fileset]
+# set_property xsim.elaborate.debug_level "all" -objects [get_filesets $sim_fileset]
+# set_property xsim.elaborate.unifast $sim_fast -objects [get_filesets $sim_fileset]
+# set_property compxlib.compiled_library_dir $sim_complibdir [current_project]
+WARNING: [Common 17-599] Property 'compxlib.compiled_library_dir' is deprecated for object type 'project'. Use 'compxlib.<simulator>_compiled_library_dir'.
+# set_property modelsim.64bit $sim_64bit -objects [get_filesets $sim_fileset]
+ERROR: [Common 17-54] The object 'fileset' does not have a property 'modelsim.64bit'.
+INFO: [Common 17-206] Exiting Vivado at Mon May 16 15:13:30 2016...

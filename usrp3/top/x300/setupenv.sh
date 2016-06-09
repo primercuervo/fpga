@@ -23,7 +23,7 @@ EOHELP
 }
 
 # Global defaults
-VIVADO_BASE_PATH="/opt/Xilinx/Vivado"
+VIVADO_BASE_PATH="/home/cuervo/src/Vivado"
 MODELSIM_BASE_PATH="/opt/mentor/modelsim"
 VIVADO_VER=2015.2
 DEVICE_NAME="USRP-X300 and USRP-X310"
