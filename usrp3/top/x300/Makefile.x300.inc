@@ -34,7 +34,8 @@ include ../../lib/io_port2/Makefile.srcs
 include ../../lib/axi/Makefile.srcs
 include ../../lib/radio/Makefile.srcs
 include ../../lib/io_cap_gen/Makefile.srcs
-include ../../lib/rfnoc/Makefile.srcs
+#include ../../lib/rfnoc/Makefile.srcs
+include $(RFNOC_OOT)/Makefile.srcs
 
 ##################################################
 # Sources

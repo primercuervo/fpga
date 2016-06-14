@@ -1,0 +1,3 @@
+export RFNOC_OOT=\
+/home/cuervo/src/prefix/src/uhd/fpga-src/usrp3/tools/scripts/../../lib/rfnoc\
+:/home/cuervo/Documents/rfoot_test/rfnoc-teclado/rfnoc/fpga-src
