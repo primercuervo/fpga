@@ -34,8 +34,8 @@ include ../../lib/io_port2/Makefile.srcs
 include ../../lib/axi/Makefile.srcs
 include ../../lib/radio/Makefile.srcs
 include ../../lib/io_cap_gen/Makefile.srcs
-#include ../../lib/rfnoc/Makefile.srcs
-include $(RFNOC_OOT)/Makefile.srcs
+include ../../lib/rfnoc/Makefile.srcs
+include ../../lib/rfnoc/oot_Makefile.srcs
 
 ##################################################
 # Sources
@@ -89,7 +89,7 @@ $(ZPU_CORE_SRCS) $(WISHBONE_SRCS) \
 $(ETH_SRCS) $(IOPORT2_SRCS) $(COREGEN_CHIPSCOPE_SRCS) \
 $(PACKET_PROC_SRCS) $(VITA_SRCS) $(DSP_SRCS) $(DRAM_SRCS) \
 $(AXI_SRCS) $(RADIO_SRCS) $(CAP_GEN_GENERIC_SRCS) $(IP_XCI_SRCS) \
-$(RFNOC_SRCS) $(HLS_IP_GEN_SRCS) $(LIB_IP_XCI_SRCS) $(LIBCOREGEN_SRCS)
+$(RFNOC_SRCS) $(RFNOC_OOT_SRCS) $(HLS_IP_GEN_SRCS) $(LIB_IP_XCI_SRCS) $(LIBCOREGEN_SRCS)
 
 
 ##################################################

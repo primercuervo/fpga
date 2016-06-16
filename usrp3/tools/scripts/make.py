@@ -84,7 +84,7 @@ def setup_parser():
             default="")
     parser.add_argument(
             "blocks",
-            choices = ['addsub', 'fft', 'fir', 'fosphor', 'keep_one_in_n', 'logpwr', 'moving_avg', 'null_source_sink', 'packet_resizer', 'pfb', 'schmidl_cox', 'split_stream', 'vector_iir', 'window'], 
+            choices = ['addsub', 'fft', 'fir_filter', 'fosphor', 'keep_one_in_n', 'logpwr', 'moving_avg', 'null_source_sink', 'packet_resizer', 'pfb', 'schmidl_cox', 'split_stream', 'vector_iir', 'window'], 
             help="List block names to instantiate.",
             default="",
             nargs='*', #Means we collect them all, or none
@@ -183,25 +183,25 @@ def create_rfnoc_env_script(include_dir):
 
 #include ../../lib/rfnoc/Makefile.srcs
 #    else: print "rfnoc_env file found!"
-#    print "loading RFNoC path as enviroment variable"
-#    rfnoc_env_file = 'rfnoc_env'
-#    separator = '<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>'
-#    env_cmd = "source ./{env_file} && echo '{sep}' && env".format(env_file=rfnoc_env_file, sep=separator)
-#    try:
-#        script_output = subprocess.check_output(env_cmd, shell=True)
-#    except subprocess.CalledProcessError as e:
-#        print "Trouble sourcing file {env_file}".format(env_file=rfnoc_env_file)
-#        exit(1)
-#    env_output = script_output.split(separator)[-1]
-#    env_output = env_output.split('\n')
-#    env = {}
-#    for env_line in env_output:
-#        env_line = env_line.strip()
-#        if len(env_line) == 0:
-#            continue
-#        k, v = env_line.split('=', 1)
-#        env[k] = v
-#    return env #TODO this is working as long as the script is running, but as soon as it stops, the env goes away. Sourcing manually temporarily, but thhere should be a fix to automate this
+    print "loading RFNoC path as enviroment variable"
+    rfnoc_env_file = 'rfnoc_env'
+    separator = '<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>'
+    env_cmd = "source ./{env_file} && echo '{sep}' && env".format(env_file=rfnoc_env_file, sep=separator)
+    try:
+        script_output = subprocess.check_output(env_cmd, shell=True)
+    except subprocess.CalledProcessError as e:
+        print "Trouble sourcing file {env_file}".format(env_file=rfnoc_env_file)
+        exit(1)
+    env_output = script_output.split(separator)[-1]
+    env_output = env_output.split('\n')
+    env = {}
+    for env_line in env_output:
+        env_line = env_line.strip()
+        if len(env_line) == 0:
+            continue
+        k, v = env_line.split('=', 1)
+        env[k] = v
+    return env #TODO this is working as long as the script is running, but as soon as it stops, the env goes away. Sourcing manually temporarily, but thhere should be a fix to automate this
 
 def load_env_from_script(rfnoc_env_file): #added to create_rfnoc_env_script
     """
@@ -211,7 +211,8 @@ def load_env_from_script(rfnoc_env_file): #added to create_rfnoc_env_script
     separator = '<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>'
     env_cmd = "source ./{env_file} && echo '{sep}' && env".format(env_file=rfnoc_env_file, sep=separator)
     try:
-        script_output = subprocess.check_output(env_cmd, shell=True)
+        #script_output = subprocess.check_output(env_cmd, shell=True)
+        os.system(env_cmd)
     except subprocess.CalledProcessorError as e:
         print "Trouble sourcing file {env_file}".format(env_file=rfnoc_env_file)
         exit(1)
@@ -234,13 +235,80 @@ def append_re_line_sequence(filename, linepattern, newline):
         newfile = oldfile.replace(last_line, last_line + newline + '\n')
         open(filename, 'w').write(newfile)
 
+def append_item_into_file(filename, linepattern, input_string):
+    """
+    Basically the same as append_re_line_sequence function, but it does not
+    append anything when the input is not found 
+    ---
+    Detects the re 'linepattern' in the file. After its last occurrence,
+    pastes the input string. If pattern doesn't exist
+    notifies and leaves the file unchanged
+    """
+    oldfile = open(filename, 'r').read()
+    lines = re.findall(linepattern, oldfile, flags=re.MULTILINE)
+    if len(lines) == 0:
+        print "Pattern {} not found. Could not write {} file".format(linepattern,oldfile)
+        return
+    else:
+        last_line = lines[-1]
+        newfile = oldfile.replace(last_line, last_line + input_string)
+    open(filename, 'w').write(newfile)
+
+def copy_sources(args):
+    """
+    takes the contents of the sources file (which should be only a list) and adds it to the RFNOC_OOT_SRCS variable
+    of the oot_Makefile.srcs, to be included into the build process
+    """
+    oot_dir = args.include_dir
+    oot_srcs_file = os.path.join(oot_dir,'rfnoc','fpga-src','Makefile.srcs')
+    dest_srcs_file = os.path.join(os.getcwd(),'..','..','lib','rfnoc','oot_Makefile.srcs')
+    srcs = compare(oot_srcs_file,dest_srcs_file)
+    linepattern = re.escape('RFNOC_OOT_SRCS = $(abspath $(addprefix $(BASE_DIR)/../lib/rfnoc/, \\\n')
+    #patt_v = re.escape('RFNOC_SRCS = $(abspath $(addprefix $(BASE_DIR)/../lib/rfnoc/, \\\n')
+    append_item_into_file(dest_srcs_file,linepattern,srcs[1])
+
+
+def compare(file1,file2):
+    """
+    compares two files line by line, and returns the lines of file that were not found on the second
+    The returned is a tuple item that can be accessed in the form of a list as tuple[0], where each line takes a position on the list
+    or in a string as tuple [1].
+    """
+    notinside = []
+    with open(file1,'r') as arg1:
+        with open(file2,'r') as arg2:
+            text1 = arg1.readlines()
+            text2 = arg2.readlines()
+            for item in text1:
+                if item not in text2:
+                    notinside.append(item)
+    lists = notinside
+    strings = ''.join(notinside)
+    return (lists, strings)
+
+def build(args):
+    cwd = os.getcwd()
+    build_dir = os.path.join(cwd,'..','..','top',args.target)#there is no x310 folder, so make sure to have a reduced target here [e300, x300]
+    if (os.path.isdir(build_dir)):
+        print "changing temporarily working directory to {0}".format(build_dir)
+        os.chdir(build_dir)
+        make_cmd = "make X300_RFNOC_HGS"
+        try: 
+            os.system(make_cmd)
+        except subprocess.CalledProcessorError as e:
+            print "Trouble building target at Makefile"
+            exit(1)
+        os.chdir(build_dir)
+
 if __name__ == "__main__":
     args = setup_parser().parse_args()
     RFNOC_BLOCKS = create_env_var(args)
     env = create_rfnoc_env_script(RFNOC_BLOCKS)
     output = create_output(args)
     file_generator(args,output)
-    os.environ = env #still not doing what I want
+    copy_sources(args)
+    os.environ = env #still not doing what I want, that is to leave the env with the variable RFNOC OOT there when the python script is done
+    build(args)
    # if (len(args.outfile)):
    #     open(args.outfile,'w').write(output)
    # else:
