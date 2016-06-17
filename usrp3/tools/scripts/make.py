@@ -84,7 +84,6 @@ def setup_parser():
             default="")
     parser.add_argument(
             "blocks",
-            choices = ['addsub', 'fft', 'fir_filter', 'fosphor', 'keep_one_in_n', 'logpwr', 'moving_avg', 'null_source_sink', 'packet_resizer', 'pfb', 'schmidl_cox', 'split_stream', 'vector_iir', 'window'], 
             help="List block names to instantiate.",
             default="",
             nargs='*', #Means we collect them all, or none
@@ -263,7 +262,7 @@ def copy_sources(args):
     oot_srcs_file = os.path.join(oot_dir,'rfnoc','fpga-src','Makefile.srcs')
     dest_srcs_file = os.path.join(os.getcwd(),'..','..','lib','rfnoc','oot_Makefile.srcs')
     srcs = compare(oot_srcs_file,dest_srcs_file)
-    linepattern = re.escape('RFNOC_OOT_SRCS = $(abspath $(addprefix $(BASE_DIR)/../lib/rfnoc/, \\\n')
+    linepattern = re.escape('RFNOC_OOT_SRCS = $(addprefix\\\n')
     #patt_v = re.escape('RFNOC_SRCS = $(abspath $(addprefix $(BASE_DIR)/../lib/rfnoc/, \\\n')
     append_item_into_file(dest_srcs_file,linepattern,srcs[1])
 
