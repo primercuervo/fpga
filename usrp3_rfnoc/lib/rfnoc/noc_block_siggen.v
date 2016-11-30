@@ -18,9 +18,9 @@ module noc_block_siggen #(
   // RFNoC Shell
   //
   ////////////////////////////////////////////////////////////
-  wire [31:0] set_data;
-  wire [7:0]  set_addr;
-  wire        set_stb;
+  (* dont_touch="true",mark_debug="true"*) wire [31:0] set_data;
+  (* dont_touch="true",mark_debug="true"*) wire [7:0]  set_addr;
+  (* dont_touch="true",mark_debug="true"*) wire        set_stb;
   reg  [63:0] rb_data;
   wire [7:0]  rb_addr;
 
@@ -55,7 +55,7 @@ module noc_block_siggen #(
     .str_sink_tdata(str_sink_tdata), .str_sink_tlast(str_sink_tlast), .str_sink_tvalid(str_sink_tvalid), .str_sink_tready(str_sink_tready),
     // Stream Source
     .str_src_tdata(str_src_tdata), .str_src_tlast(str_src_tlast), .str_src_tvalid(str_src_tvalid), .str_src_tready(str_src_tready),
-    // Stream IDs set by host 
+    // Stream IDs set by host
     .src_sid(src_sid),                   // SID of this block
     .next_dst_sid(next_dst_sid),         // Next destination SID
     .resp_in_dst_sid(resp_in_dst_sid),   // Response destination SID for input stream responses / errors
@@ -80,11 +80,11 @@ module noc_block_siggen #(
   //
   ////////////////////////////////////////////////////////////
 
-  wire [31:0]  s_axis_data_tdata;
-  wire [127:0] s_axis_data_tuser;
-  wire         s_axis_data_tlast;
-  wire         s_axis_data_tvalid;
-  wire         s_axis_data_tready;
+  (* dont_touch="true",mark_debug="true"*) wire [31:0]  s_axis_data_tdata;
+  (* dont_touch="true",mark_debug="true"*) wire [127:0] s_axis_data_tuser;
+  (* dont_touch="true",mark_debug="true"*) wire         s_axis_data_tlast;
+  (* dont_touch="true",mark_debug="true"*) wire         s_axis_data_tvalid;
+  (* dont_touch="true",mark_debug="true"*) wire         s_axis_data_tready;
   wire         s_axis_data_tvalid_int;
   wire         s_axis_data_tready_int;
   wire [31:0]  s_axis_const_tdata;
@@ -103,9 +103,9 @@ module noc_block_siggen #(
   wire         s_axis_mux_tvalid;
   wire         s_axis_mux_tready;
   wire [15:0]  payload_length;
-  wire [15:0]  gain;
-  wire [1:0]   wave_type;
-  wire         enable;
+  (* dont_touch="true",mark_debug="true"*) wire [15:0]  gain;
+  (* dont_touch="true",mark_debug="true"*) wire [1:0]   wave_type;
+  (* dont_touch="true",mark_debug="true"*) wire         enable;
 
   axi_wrapper #(
     .SIMPLE_MODE(0),
